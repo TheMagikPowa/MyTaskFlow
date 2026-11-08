@@ -1,0 +1,144 @@
+
+<section class="new-project">
+  <div class="form-header">
+    <div>
+      <h2>Nuovo progetto</h2>
+      <p>Inserisci i dettagli del progetto da creare.</p>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+    <div class="form-grid">
+
+      <!-- Nome progetto -->
+      <div class="form-group">
+        <label for="name">Nome progetto</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Es. Restyling sito web"
+          name="name"
+          [(ngModel)]="newProject.name"
+          required
+          minlength="3"
+          #projectName="ngModel"
+        />
+
+        @if (projectName.touched && projectName.invalid) {
+          <p>Inserisci un nome di almeno 3 caratteri!</p>
+        }
+      </div>
+
+      <!-- Stato -->
+      <div class="form-group">
+        <label for="status">Stato</label>
+        <select
+          id="status"
+          name="status"
+          [(ngModel)]="newProject.status"
+          required
+          #status="ngModel"
+        >
+          <option value="in-progress">In corso</option>
+          <option value="completed">Completato</option>
+        </select>
+
+        @if (status.touched && status.invalid) {
+          <p>Seleziona uno stato!</p>
+        }
+      </div>
+
+      <!-- Descrizione -->
+      <div class="form-group full-width">
+        <label for="description">Descrizione</label>
+        <textarea
+          id="description"
+          rows="3"
+          placeholder="Descrivi brevemente il progetto..."
+          name="description"
+          [(ngModel)]="newProject.description"
+        ></textarea>
+      </div>
+
+      <!-- Completamento -->
+      <div class="form-group">
+        <label for="completion">Completamento (%)</label>
+        <input
+          type="number"
+          id="completion"
+          min="0"
+          max="100"
+          placeholder="0"
+          name="completion"
+          [(ngModel)]="newProject.completion"
+          required
+          #compl="ngModel"
+        />
+
+        @if (compl.touched && compl.invalid) {
+          <p>Inserisci un valore compreso tra 0 e 100!</p>
+        }
+      </div>
+
+      <!-- Attività totali -->
+      <div class="form-group">
+        <label for="totalTasks">Attività totali</label>
+        <input
+          type="number"
+          id="totalTasks"
+          min="0"
+          placeholder="Es. 20"
+          name="totalTasks"
+          [(ngModel)]="newProject.totalTasks"
+          required
+          #totTasks="ngModel"
+        />
+
+        @if (totTasks.touched && totTasks.invalid) {
+          <p>Inserisci un numero non negativo!</p>
+        }
+      </div>
+
+      <!-- Attività completate -->
+      <div class="form-group">
+        <label for="completedTasks">Attività completate</label>
+        <input
+          type="number"
+          id="completedTasks"
+          min="0"
+          placeholder="Es. 5"
+          name="completedTasks"
+          [(ngModel)]="newProject.completedTasks"
+          required
+          #complTasks="ngModel"
+        />
+
+        @if (complTasks.touched && complTasks.invalid) {
+          <p>Inserisci un numero non negativo!</p>
+        }
+
+        @if (
+          complTasks.touched &&
+          totTasks.valid &&
+          complTasks.valid &&
+          !isTasksCountValid()
+        ) {
+          <p>Le attività completate non possono superare quelle totali!</p>
+        }
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="btn-cancel">
+        Annulla
+      </button>
+
+      <button type="submit" class="btn-submit">
+        Crea progetto
+      </button>
+    </div>
+  </form>
+</section>
+
+

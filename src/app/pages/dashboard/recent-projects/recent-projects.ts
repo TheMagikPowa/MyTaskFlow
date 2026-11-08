@@ -3,11 +3,11 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import {ProjectService } from '../../../services/projects.service';
 import { ProjectModel } from '../../../models/project.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { filter, map } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recent-projects',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './recent-projects.html',
   styleUrl: './recent-projects.css',
 })
