@@ -1,0 +1,50 @@
+<section class="tasks-section">
+
+  <div class="section-header">
+    <div>
+      <h2>Attività recenti</h2>
+      <p>Controlla le ultime attività dei tuoi progetti.</p>
+    </div>
+
+    <a href="#">Vedi tutte</a>
+  </div>
+
+  <div class="tasks-container">
+    <table class="tasks-table">
+
+      <thead>
+        <tr>
+          <th>Attività</th>
+          <th>Progetto</th>
+          <th>Priorità</th>
+          <th>Stato</th>
+          <th>Scadenza</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        @for (item of tasks(); track item.id) {
+          <tr>
+          <td class="task-name">{{item.title}}</td>
+          <td>{{item.project}}</td>
+          <td>
+            <span class="priority"
+              [class.high]="item.priority === 'high'"
+              [class.medium]="item.priority === 'medium'"
+              [class.low]="item.priority === 'low'">{{item.priority}}</span>
+          </td>
+          <td>
+            <span 
+            class="status" 
+            [class.in-progress]="item.status==='in-progress'"
+            [class.pending]="item.status==='pending'"
+            [class.completed]="item.status==='completed'">{{item.status}}</span>
+          </td>
+          <td>{{item.dueDate}}</td>
+        </tr>
+      }
+      </tbody>
+    </table>
+  </div>
+
+</section>

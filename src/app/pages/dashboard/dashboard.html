@@ -1,0 +1,31 @@
+<div class="dashboard">
+
+  <header class="dashboard-header">
+    <div>
+      <h1>Dashboard</h1>
+      <p>Ecco una panoramica delle tue attività.</p>
+    </div>
+
+    <button class="new-project-btn">
+      + Nuovo progetto
+    </button>
+  </header>
+
+  <section class="stats-grid">
+    @for (item of dummyStats(); track $index) {
+      <app-stats-card 
+      [title]="item.title" 
+      [value]="item.value" 
+      [icon]="item.icon" 
+      [description]="item.description"></app-stats-card>
+
+    }
+    
+  </section>
+
+  <section class="dashboard-content">
+    <app-recent-tasks></app-recent-tasks>
+    <app-recent-projects></app-recent-projects>
+  </section>
+
+</div>

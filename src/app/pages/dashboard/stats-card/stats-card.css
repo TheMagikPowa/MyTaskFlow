@@ -1,0 +1,51 @@
+.stats-card {
+  background-color: white;
+  border: 1px solid #e9ebf2;
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stats-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-title {
+  color: #858b9b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #eeedff;
+  color: #6257d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.card-value {
+  color: #202638;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.card-description {
+  color: #858b9b;
+  font-size: 12px;
+}

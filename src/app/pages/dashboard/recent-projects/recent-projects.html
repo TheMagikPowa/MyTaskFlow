@@ -1,0 +1,50 @@
+<section class="projects-section">
+  <div class="section-header">
+    <div>
+      <h2>Progetti recenti</h2>
+      <p>Monitora lo stato dei tuoi progetti.</p>
+    </div>
+
+    <a href="#">Vedi tutti</a>
+  </div>
+
+  <div class="projects-grid">
+    @if (loading()) {
+      <p>Caricamento...</p>
+    } @else if (!error() && projects().length!==0) {
+      @for (project of projects(); track project.id) {
+
+        <article class="project-card">
+          <div class="project-info">
+            <h3>{{project.name}}</h3>
+            <span class="project-status" 
+            [class.active]="project.status==='in-progress'"
+            [class.completed]="project.status==='completed'">{{project.status}}</span>
+          </div>
+  
+          <p>{{project.description}}</p>
+  
+          <div class="progress-info">
+            <span>Completamento</span>
+            <strong>{{project.completion}}%</strong>
+          </div>
+  
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="project.completion"></div>
+          </div>
+  
+          <div class="project-footer">
+            <span>{{project.totalTasks}} attività</span>
+            <span>{{project.completedTasks}} completate</span>
+          </div>
+        </article>
+      } 
+    } @else if (projects().length===0) {
+      <p>Non ci sono progetti da mostrare!</p>
+    } @else {
+      <p>Qualcosa è andato storto, riprova più tardi!</p>
+      <button (click)="loadProjects()">Riprova</button>
+    }
+    
+  </div>
+</section>

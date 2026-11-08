@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Restyling sito web",
+      "description": "Rinnovamento grafico e strutturale del sito aziendale.",
+      "status": "in-progress",
+      "completion": 65,
+      "totalTasks": 20,
+      "completedTasks": 13
+    },
+    {
+      "id": 2,
+      "name": "App gestione palestra",
+      "description": "Applicazione per gestire iscrizioni, abbonamenti e corsi.",
+      "status": "in-progress",
+      "completion": 40,
+      "totalTasks": 25,
+      "completedTasks": 10
+    },
+    {
+      "id": 3,
+      "name": "Dashboard vendite",
+      "description": "Dashboard per monitorare vendite e andamento commerciale.",
+      "status": "completed",
+      "completion": 100,
+      "totalTasks": 15,
+      "completedTasks": 15
+    },
+    {
+      "id": 4,
+      "name": "Sistema di prenotazioni",
+      "description": "Sistema online per gestire appuntamenti e prenotazioni.",
+      "status": "in-progress",
+      "completion": 20,
+      "totalTasks": 30,
+      "completedTasks": 6
+    }
+  ]
+}
