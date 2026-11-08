@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+  <form (ngSubmit)="onSubmit(projectForm)" #projectForm="ngForm">
     <div class="form-grid">
 
       <!-- Nome progetto -->
@@ -130,15 +130,20 @@
     </div>
 
     <div class="form-actions">
-      <button type="button" class="btn-cancel">
+      <button type="button" class="btn-cancel" routerLink="/">
         Annulla
       </button>
 
-      <button type="submit" class="btn-submit">
+      <button type="submit" class="btn-submit" [disabled]="!projectForm.valid || !isTasksCountValid()">
         Crea progetto
       </button>
     </div>
   </form>
+  @if (success()) {
+    <p>Progetto creato correttamente!</p>
+  } @else if (error()) {
+    <p>Si è verificato un errore durante la creazione del progetto.</p>
+  }
 </section>
 
 

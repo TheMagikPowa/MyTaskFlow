@@ -1,0 +1,116 @@
+
+<section class="projects-page">
+
+  <div class="page-header">
+    <div>
+      <h2>Tutti i progetti</h2>
+      <p>Gestisci e monitora tutti i tuoi progetti.</p>
+    </div>
+
+    <button routerLink="/projects/new" class="new-project-btn">
+      + Nuovo progetto
+    </button>
+  </div>
+
+  <div class="projects-toolbar">
+
+    <div class="search-box">
+      <input
+        type="text"
+        placeholder="Cerca un progetto..."
+      />
+    </div>
+
+    <div class="filter-box">
+      <select>
+        <option value="all">Tutti i progetti</option>
+        <option value="in-progress">In corso</option>
+        <option value="completed">Completati</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="projects-grid">
+
+    <article class="project-card">
+      <div class="project-card-header">
+        <h3>Restyling sito web</h3>
+        <span class="status in-progress">In corso</span>
+      </div>
+
+      <p class="project-description">
+        Aggiornamento grafico e funzionale del sito aziendale.
+      </p>
+
+      <div class="project-progress">
+        <div class="progress-info">
+          <span>Completamento</span>
+          <strong>65%</strong>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 65%"></div>
+        </div>
+      </div>
+
+      <div class="project-footer">
+        <span>13 / 20 attività</span>
+        <a href="#">Dettagli →</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-header">
+        <h3>App gestione palestra</h3>
+        <span class="status in-progress">In corso</span>
+      </div>
+
+      <p class="project-description">
+        Applicazione per la gestione di iscritti e abbonamenti.
+      </p>
+
+      <div class="project-progress">
+        <div class="progress-info">
+          <span>Completamento</span>
+          <strong>40%</strong>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 40%"></div>
+        </div>
+      </div>
+
+      <div class="project-footer">
+        <span>10 / 25 attività</span>
+        <a href="#">Dettagli →</a>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-card-header">
+        <h3>Dashboard vendite</h3>
+        <span class="status completed">Completato</span>
+      </div>
+
+      <p class="project-description">
+        Dashboard per analizzare le performance commerciali.
+      </p>
+
+      <div class="project-progress">
+        <div class="progress-info">
+          <span>Completamento</span>
+          <strong>100%</strong>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" style="width: 100%"></div>
+        </div>
+      </div>
+
+      <div class="project-footer">
+        <span>15 / 15 attività</span>
+        <a href="#">Dettagli →</a>
+      </div>
+    </article>
+
+  </div>
+
+</section>

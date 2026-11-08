@@ -18,9 +18,14 @@ export class ProjectService {
       })).filter(p => p.status === 'in-progress')));
   }
 
+  getAllProjects() {
+    return this.http.get<ProjectModel[]>('http://localhost:3000/projects').pipe(
+      map(projects=> projects.map(p=> ({...p, completion: p.completion ?? 0}))
+      ));
+  }
+
   createProject( newProject: NewProjectModel): Observable<ProjectModel> {
-    const np= this.http.post<ProjectModel>('http://localhost:3000/projects', newProject);
-    return np;
+    return this.http.post<ProjectModel>('http://localhost:3000/projects', newProject);
 
   }
 

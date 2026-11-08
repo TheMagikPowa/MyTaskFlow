@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Restyling sito web",
       "description": "Rinnovamento grafico e strutturale del sito aziendale.",
       "status": "in-progress",
@@ -10,7 +10,7 @@
       "completedTasks": 13
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "App gestione palestra",
       "description": "Applicazione per gestire iscrizioni, abbonamenti e corsi.",
       "status": "in-progress",
@@ -19,7 +19,7 @@
       "completedTasks": 10
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Dashboard vendite",
       "description": "Dashboard per monitorare vendite e andamento commerciale.",
       "status": "completed",
@@ -28,13 +28,50 @@
       "completedTasks": 15
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Sistema di prenotazioni",
       "description": "Sistema online per gestire appuntamenti e prenotazioni.",
       "status": "in-progress",
       "completion": 20,
       "totalTasks": 30,
       "completedTasks": 6
+    },
+    {
+      "name": "sdvsw",
+      "description": "prova",
+      "status": "in-progress",
+      "completion": 33,
+      "totalTasks": 45,
+      "completedTasks": 12,
+      "id": "ztx8BNyqU9Y"
+    },
+    {
+      "name": "sdvsw",
+      "description": "prova",
+      "status": "in-progress",
+      "completion": 33,
+      "totalTasks": 45,
+      "completedTasks": 12,
+      "id": "kY0uGfuQTDY"
+    },
+    {
+      "name": "Alessandro",
+      "description": "test 1",
+      "status": "completed",
+      "completion": 23,
+      "totalTasks": 3,
+      "completedTasks": 1,
+      "id": "9bZs0SSYL1o"
+    },
+    {
+      "name": "wsvew",
+      "description": "",
+      "status": "in-progress",
+      "completion": 0,
+      "totalTasks": 0,
+      "completedTasks": 0,
+      "id": "UDdPvdqOgpU"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
