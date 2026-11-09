@@ -18,11 +18,13 @@
       <input
         type="text"
         placeholder="Cerca un progetto..."
+        [ngModel]="projectInput()"
+        (ngModelChange)="projectInput.set($event)"
       />
     </div>
 
     <div class="filter-box">
-      <select>
+      <select [ngModel]="statusInput()" (ngModelChange)="statusInput.set($event)">
         <option value="all">Tutti i progetti</option>
         <option value="in-progress">In corso</option>
         <option value="completed">Completati</option>
@@ -31,86 +33,69 @@
 
   </div>
 
-  <div class="projects-grid">
+  @if (loading()) {
+    <p>Caricamento in corso...</p>
+  }
+  @else if (error()) {
+    <p>Si è verificato un errore durante il caricamento. Riprova più tardi!</p>
+    <button (click)="getProjects()">Riprova</button>
+  }
+  @else if (filteredProjects().length === 0) {
+    <p>Nessun progetto trovato.</p>
+  }
+  @else {
+    <div class="projects-grid">
 
-    <article class="project-card">
-      <div class="project-card-header">
-        <h3>Restyling sito web</h3>
-        <span class="status in-progress">In corso</span>
-      </div>
+      @for (p of filteredProjects(); track p.id) {
 
-      <p class="project-description">
-        Aggiornamento grafico e funzionale del sito aziendale.
-      </p>
+        <article class="project-card">
 
-      <div class="project-progress">
-        <div class="progress-info">
-          <span>Completamento</span>
-          <strong>65%</strong>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 65%"></div>
-        </div>
-      </div>
+          <div class="project-card-header">
+            <h3>{{ p.name }}</h3>
 
-      <div class="project-footer">
-        <span>13 / 20 attività</span>
-        <a href="#">Dettagli →</a>
-      </div>
-    </article>
+            <span
+              class="status"
+              [class.in-progress]="p.status === 'in-progress'"
+              [class.completed]="p.status === 'completed'">
 
-    <article class="project-card">
-      <div class="project-card-header">
-        <h3>App gestione palestra</h3>
-        <span class="status in-progress">In corso</span>
-      </div>
+              {{ p.status === 'in-progress' ? 'In corso' : 'Completato' }}
 
-      <p class="project-description">
-        Applicazione per la gestione di iscritti e abbonamenti.
-      </p>
+            </span>
+          </div>
 
-      <div class="project-progress">
-        <div class="progress-info">
-          <span>Completamento</span>
-          <strong>40%</strong>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 40%"></div>
-        </div>
-      </div>
+          <p class="project-description">
+            {{ p.description }}
+          </p>
 
-      <div class="project-footer">
-        <span>10 / 25 attività</span>
-        <a href="#">Dettagli →</a>
-      </div>
-    </article>
+          <div class="project-progress">
 
-    <article class="project-card">
-      <div class="project-card-header">
-        <h3>Dashboard vendite</h3>
-        <span class="status completed">Completato</span>
-      </div>
+            <div class="progress-info">
+              <span>Completamento</span>
+              <strong>{{ p.completion }}%</strong>
+            </div>
 
-      <p class="project-description">
-        Dashboard per analizzare le performance commerciali.
-      </p>
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                [style.width.%]="p.completion">
+              </div>
+            </div>
 
-      <div class="project-progress">
-        <div class="progress-info">
-          <span>Completamento</span>
-          <strong>100%</strong>
-        </div>
-        <div class="progress-bar">
-          <div class="progress-fill" style="width: 100%"></div>
-        </div>
-      </div>
+          </div>
 
-      <div class="project-footer">
-        <span>15 / 15 attività</span>
-        <a href="#">Dettagli →</a>
-      </div>
-    </article>
+          <div class="project-footer">
+            <span>
+              {{ p.completedTasks }} / {{ p.totalTasks }} attività
+            </span>
 
-  </div>
+            <a href="#">Dettagli →</a>
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+  }
 
 </section>

@@ -29,6 +29,10 @@ export class ProjectService {
 
   }
 
+  deleteProject(id:number|string){
+    return this.http.delete(`http://localhost:3000/projects/${id}`);
+  }
+
   
 }
   

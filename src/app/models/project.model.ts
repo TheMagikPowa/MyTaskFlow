@@ -1,5 +1,5 @@
 export interface ProjectModel {
-    id: number,
+    id: string,
     name: string,
     description:string,
     status: 'in-progress'| 'completed',
