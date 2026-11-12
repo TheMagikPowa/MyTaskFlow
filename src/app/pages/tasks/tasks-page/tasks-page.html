@@ -1,0 +1,96 @@
+<section class="tasks-page">
+
+  <div class="page-header">
+    <h2>Tutte le attività</h2>
+    <p>Gestisci e monitora le attività dei tuoi progetti.</p>
+  </div>
+
+  <div class="filters-container">
+    <input
+      type="text"
+      placeholder="Cerca un'attività..."
+      [ngModel]="tasksInput()"
+      (ngModelChange)="tasksInput.set($event)"
+    />
+
+    <select [ngModel]="selection()" (ngModelChange)="selection.set($event)">
+      <option value="all">Tutti gli stati</option>
+      <option value="in-progress">In corso</option>
+      <option value="pending">In attesa</option>
+      <option value="completed">Completate</option>
+    </select>
+
+    <button  class="add-task-btn" routerLink="/tasks/new">+ Aggiungi attività</button>
+  </div>
+
+  <div class="tasks-container">
+    <table class="tasks-table">
+
+      <thead>
+        <tr>
+          <th>Attività</th>
+          <th>Progetto</th>
+          <th>Priorità</th>
+          <th>Stato</th>
+          <th>Scadenza</th>
+          <th></th>
+        </tr>
+      </thead>
+
+      
+      <tbody>
+        @if (loading()) {
+            <tr>
+                <td colspan="6" class="table-message">Caricamento...</td>
+            </tr>
+        } @else if (error()) {
+            <tr>
+                <td colspan="5" class="table-message">{{error()}}</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="retry-btn" (click)="loadTasks()">Riprova</button>
+                </td>
+            </tr>
+        } @else {
+
+            @if (filteredTasks().length === 0) {
+            <tr>
+                <td colspan="5" class="table-message">Nessuna attività trovata.</td>
+            </tr>
+              } @else {
+                  @for (item of filteredTasks(); track item.id) {
+                    <tr>
+                    <td class="task-name">{{item.title}}</td>
+                    <td>{{item.project}}</td>
+                    <td>
+                      <span class="priority"
+                        [class.high]="item.priority === 'high'"
+                        [class.medium]="item.priority === 'medium'"
+                        [class.low]="item.priority === 'low'">{{item.priority}}</span>
+                    </td>
+                    <td>
+                      <span 
+                      class="status" 
+                      [class.in-progress]="item.status==='in-progress'"
+                      [class.pending]="item.status==='pending'"
+                      [class.completed]="item.status==='completed'">{{item.status}}</span>
+                    </td>
+                    <td>{{item.dueDate}}</td>
+                    <td>
+                        <button class="edit-btn" [routerLink]="['/tasks/edit', item.id]">Modifica</button>
+                        <button class="delete-btn" (click)="deleteTask(item.id)">Elimina</button>
+                    </td>
+                  </tr>
+                  }
+                }
+              }   
+            </tbody>
+          </table>
+          @if (deleteError()) {
+            <p class="delete-error">{{deleteError()}}</p>
+          }
+  </div>
+
+</section>
+

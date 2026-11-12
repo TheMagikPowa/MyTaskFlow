@@ -9,42 +9,55 @@
     <a href="#">Vedi tutte</a>
   </div>
 
-  <div class="tasks-container">
-    <table class="tasks-table">
+  @if (error()) {
+    <p>{{error()}}</p>
+  } @else if (loading()) {
+    <p>Caricamento...</p>
+  } @else {
 
-      <thead>
-        <tr>
-          <th>Attività</th>
-          <th>Progetto</th>
-          <th>Priorità</th>
-          <th>Stato</th>
-          <th>Scadenza</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        @for (item of tasks(); track item.id) {
+    <div class="tasks-container">
+      <table class="tasks-table">
+  
+        <thead>
           <tr>
-          <td class="task-name">{{item.title}}</td>
-          <td>{{item.project}}</td>
-          <td>
-            <span class="priority"
-              [class.high]="item.priority === 'high'"
-              [class.medium]="item.priority === 'medium'"
-              [class.low]="item.priority === 'low'">{{item.priority}}</span>
-          </td>
-          <td>
-            <span 
-            class="status" 
-            [class.in-progress]="item.status==='in-progress'"
-            [class.pending]="item.status==='pending'"
-            [class.completed]="item.status==='completed'">{{item.status}}</span>
-          </td>
-          <td>{{item.dueDate}}</td>
-        </tr>
-      }
-      </tbody>
-    </table>
-  </div>
+            <th>Attività</th>
+            <th>Progetto</th>
+            <th>Priorità</th>
+            <th>Stato</th>
+            <th>Scadenza</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+        @if (allTasks().length === 0) {
+          <tr>
+            <td colspan="5">Nessuna attività trovata.</td>
+          </tr>
+        } @else {
+              @for (item of allTasks(); track item.id) {
+                <tr>
+                <td class="task-name">{{item.title}}</td>
+                <td>{{item.project}}</td>
+                <td>
+                  <span class="priority"
+                    [class.high]="item.priority === 'high'"
+                    [class.medium]="item.priority === 'medium'"
+                    [class.low]="item.priority === 'low'">{{item.priority}}</span>
+                </td>
+                <td>
+                  <span 
+                  class="status" 
+                  [class.in-progress]="item.status==='in-progress'"
+                  [class.pending]="item.status==='pending'"
+                  [class.completed]="item.status==='completed'">{{item.status}}</span>
+                </td>
+                <td>{{item.dueDate}}</td>
+              </tr>
+            }
+          }
+        </tbody>
+      </table>
+    </div>
+  }
 
 </section>

@@ -1,0 +1,102 @@
+
+<section class="edit-project-page">
+
+  <div class="page-header">
+    <div>
+      <h2>Modifica progetto</h2>
+      <p>Aggiorna le informazioni del tuo progetto.</p>
+    </div>
+
+    <button type="button" class="back-btn" routerLink="/projects">
+      ← Torna ai progetti
+    </button>
+  </div>
+
+  <div class="form-container">
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+      @if (loading()) {
+        <p>Caricamento progetto...</p>
+      } @else if (error()) {
+          <p>{{error()}}</p>
+        } @else if(!loading()) {
+          <div class="form-group">
+            <label for="name">Nome progetto</label>
+            <input id="name" type="text" name="name" [(ngModel)]="editedProj.name" 
+            required minlength="3" #projectName="ngModel">
+            @if (projectName.touched && projectName.invalid) {
+                <p>Inserisci un nome di almeno 3 caratteri!</p>
+            }
+          </div>
+    
+          <div class="form-group">
+            <label for="description">Descrizione</label>
+            <textarea id="description" name="description" rows="4" 
+            [(ngModel)]="editedProj.description"></textarea>
+          </div>
+    
+          <div class="form-row">
+    
+            <div class="form-group">
+              <label for="status">Stato</label>
+              <select id="status" name="status" [(ngModel)]="editedProj.status" 
+              required #status="ngModel">
+                <option value="in-progress">In corso</option>
+                <option value="completed">Completato</option>
+              </select>
+              @if (status.touched && status.invalid) {
+                <p>Seleziona uno stato!</p>
+              }
+            </div>
+    
+            <div class="form-group">
+              <label for="completion">Completamento (%)</label>
+              <input id="completion" type="number" name="completion" [(ngModel)]="editedProj.completion"
+              required min="0" max="100" #completion="ngModel">
+              @if (completion.touched && completion.invalid) {
+                <p>Inserisci un valore compreso tra 0 e 100!</p>
+              }
+            </div>
+    
+          </div>
+    
+          <div class="form-row">
+    
+            <div class="form-group">
+              <label for="totalTasks">Attività totali</label>
+              <input id="totalTasks" type="number" name="totalTasks" [(ngModel)]="editedProj.totalTasks"
+              required min="0" #totTask="ngModel">
+                @if (totTask.invalid && totTask.touched) {
+                    <p>Inserisci un numero non negativo!</p>
+                }
+            </div>
+    
+            <div class="form-group">
+              <label for="completedTasks">Attività completate</label>
+              <input id="completedTasks" type="number" name="completedTasks" [(ngModel)]="editedProj.completedTasks"
+              required min="0" #complTasks="ngModel">
+                @if (complTasks.touched && complTasks.invalid) {
+                    <p>Inserisci un numero non negativo!</p>
+                }
+            </div>
+    
+            @if (editedProj.completedTasks > editedProj.totalTasks) {
+                <p>Le task completate non possono essere maggiori di quelle totali</p>
+            }
+    
+          </div>
+    
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" routerLink="/projects">Annulla</button>
+            <button type="submit" class="save-btn" [disabled]="loading() || form.invalid || editedProj.completedTasks > editedProj.totalTasks">Salva modifiche</button>
+          </div>
+        @if (success()) {
+          <p>Progetto aggiornato con successo!</p>
+        }
+      }
+
+
+    </form>
+
+  </div>
+
+</section>

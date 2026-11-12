@@ -88,8 +88,18 @@
               {{ p.completedTasks }} / {{ p.totalTasks }} attività
             </span>
 
-            <a href="#">Dettagli →</a>
+            
+            <div>
+              <button [routerLink]="['/projects/edit', p.id]">
+                Modifica progetto
+              </button>
+              
+              <button class="delete-btn" (click)="deleteProject(p.id)">
+                Elimina progetto
+              </button>
+            </div>
           </div>
+
 
         </article>
 

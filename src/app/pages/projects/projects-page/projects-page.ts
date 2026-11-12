@@ -59,7 +59,10 @@ export class ProjectsPage implements OnInit {
     );
   }
 
-  deleteProject(id: number | string) {
+  deleteProject(id: string) {
+    if (!confirm('Sei sicuro di voler eliminare questo progetto?')) {
+      return;
+    }
     this.projectsService.deleteProject(id).subscribe({
       next: ()=> {
         this.projects.update(projects =>
@@ -74,6 +77,11 @@ export class ProjectsPage implements OnInit {
     
   }
 
+  updateProject(id: string, updatedProject: ProjectModel) {
+    this.projectsService.updateProject(id, updatedProject).subscribe({
+      
+      })
+    }
+  }
 
 
-}
