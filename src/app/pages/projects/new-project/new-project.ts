@@ -43,7 +43,7 @@ export class NewProject {
           this.success.set(true);
           this.error.set(false);
           console.log(proj);
-          setTimeout(()=> this.router.navigateByUrl("/"), 2500)
+          setTimeout(()=> this.router.navigateByUrl("/"), 2000)
           
         },
         error: err=> {

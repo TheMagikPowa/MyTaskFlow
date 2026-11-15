@@ -6,6 +6,7 @@ import { EditProject } from './pages/projects/edit-project/edit-project';
 import { TasksPage } from './pages/tasks/tasks-page/tasks-page';
 import { EditTask } from './pages/tasks/edit-task/edit-task';
 import { AddTask } from './pages/tasks/add-task/add-task';
+import { Calendar } from './pages/calendar/calendar';
 
 export const routes: Routes = [
     {
@@ -38,5 +39,9 @@ export const routes: Routes = [
     {
         path: 'tasks/new',
         component: AddTask
+    },
+    {
+        path: 'calendar',
+        component: Calendar
     }
 ];

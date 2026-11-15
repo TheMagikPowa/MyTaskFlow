@@ -1,0 +1,106 @@
+
+<section class="calendar-page">
+
+  <div class="page-header">
+    <div>
+      <h2>Calendario</h2>
+      <p>Monitora le scadenze e organizza le attività dei tuoi progetti.</p>
+    </div>
+  </div>
+
+  <div class="calendar-layout">
+
+    <div class="calendar-container">
+
+      <div class="calendar-header">
+
+        <div class="month-info">
+          <h3><!-- Mese e anno --></h3>
+          <p>Gestisci le tue scadenze</p>
+        </div>
+
+        <div class="calendar-navigation">
+          <button type="button" class="nav-btn">
+            &#8249;
+          </button>
+
+          <button type="button" class="today-btn">
+            Oggi
+          </button>
+
+          <button type="button" class="nav-btn">
+            &#8250;
+          </button>
+        </div>
+
+      </div>
+
+      <div class="calendar-grid">
+
+        <div class="calendar-weekdays">
+          <span>Lun</span>
+          <span>Mar</span>
+          <span>Mer</span>
+          <span>Gio</span>
+          <span>Ven</span>
+          <span>Sab</span>
+          <span>Dom</span>
+        </div>
+
+        <div class="calendar-days">
+
+          <!-- Qui genererai i giorni del mese -->
+
+          <div class="calendar-day">
+            <span class="day-number">1</span>
+
+            <div class="day-events">
+              <span class="event event-progress">Attività</span>
+              <span class="event event-pending">Attività</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="calendar-legend">
+        <div><span class="legend-dot progress"></span> In corso</div>
+        <div><span class="legend-dot pending"></span> In attesa</div>
+        <div><span class="legend-dot completed"></span> Completata</div>
+      </div>
+
+    </div>
+
+    <aside class="selected-day-container">
+
+      <div class="selected-day-header">
+        <h3>Attività del giorno</h3>
+        <p><!-- Data selezionata --></p>
+      </div>
+
+      <div class="selected-day-tasks">
+
+        <!-- Qui mostrerai le attività della data selezionata -->
+
+        <div class="calendar-task">
+          <div class="task-status progress"></div>
+
+          <div class="task-info">
+            <h4>Titolo attività</h4>
+            <p>Nome progetto</p>
+            <span class="task-priority high">Priorità alta</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="empty-day">
+        <p>Nessuna attività prevista per questa giornata.</p>
+      </div>
+
+    </aside>
+
+  </div>
+
+</section>

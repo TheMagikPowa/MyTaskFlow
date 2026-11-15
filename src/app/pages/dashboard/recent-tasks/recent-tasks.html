@@ -37,7 +37,7 @@
               @for (item of allTasks(); track item.id) {
                 <tr>
                 <td class="task-name">{{item.title}}</td>
-                <td>{{item.project}}</td>
+                <td>{{getProjectName(item.projectId)}}</td>
                 <td>
                   <span class="priority"
                     [class.high]="item.priority === 'high'"

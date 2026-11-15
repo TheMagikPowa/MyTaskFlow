@@ -1,0 +1,170 @@
+
+.edit-task-page {
+  padding: 30px;
+  color: #e5e7eb;
+}
+
+.page-header {
+  margin-bottom: 30px;
+}
+
+.page-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.page-header p {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.form-container {
+  max-width: 750px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  flex: 1;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  background: #0f172a;
+  border: 1px solid #475569;
+  border-radius: 7px;
+  color: #e5e7eb;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #8b5cf6;
+}
+
+.form-group input::placeholder {
+  color: #64748b;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group small {
+  color: #f87171;
+  font-size: 12px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.form-actions button {
+  padding: 11px 20px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.cancel-btn {
+  background: #334155;
+  color: #e5e7eb;
+  border: 1px solid #475569;
+}
+
+.cancel-btn:hover {
+  background: #475569;
+}
+
+.submit-btn {
+  background: #7c3aed;
+  color: white;
+  border: none;
+}
+
+.submit-btn:hover {
+  background: #6d28d9;
+}
+
+.form-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading-message,
+.empty-message {
+  color: #94a3b8;
+  margin-bottom: 18px;
+}
+
+.success-message {
+  color: #4ade80;
+  background: #14532d33;
+  border: 1px solid #166534;
+  border-radius: 7px;
+  padding: 12px;
+  margin-bottom: 18px;
+}
+
+.error-message {
+  color: #f87171;
+  background: #7f1d1d33;
+  border: 1px solid #991b1b;
+  border-radius: 7px;
+  padding: 12px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 600px) {
+  .edit-task-page {
+    padding: 18px;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

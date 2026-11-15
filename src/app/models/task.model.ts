@@ -1,7 +1,7 @@
 export interface TaskModel {
     id: string,
     title: string,
-    project: string,
+    projectId: string,
     priority: 'high' | 'medium' | 'low',
     status: 'in-progress' | 'pending' | 'completed',
     dueDate:string

@@ -14,7 +14,7 @@ export class TasksService {
     return this.http.get<TaskModel[]>('http://localhost:3000/tasks');
   }
 
-  getTaskById (id: number| string): Observable<TaskModel> {
+  getTaskById (id: string): Observable<TaskModel> {
     return  this.http.get<TaskModel>(`http://localhost:3000/tasks/${id}`) ;
 
   }

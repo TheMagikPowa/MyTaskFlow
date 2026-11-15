@@ -1,1 +1,120 @@
-<p>edit-task works!</p>
+
+<section class="edit-task-page">
+
+  <div class="page-header">
+    <h2>Modifica attività</h2>
+    <p>Aggiorna le informazioni dell'attività selezionata.</p>
+  </div>
+
+  <div class="form-container">
+
+    @if (message()) {
+      <p class="success-message">{{ message() }}</p>
+    }
+
+    @if (loading()) {
+      <p class="loading-message">Caricamento...</p>
+    } @else if (error()) {
+      <p class="error-message">{{ error() }}</p>
+    } @else {
+
+      <form
+        class="task-form"
+        (ngSubmit)="onSubmit(form)"
+        #form="ngForm"
+      >
+
+        <div class="form-group">
+          <label for="title">Titolo attività</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Es. Realizzare homepage"
+            required
+            [(ngModel)]="editTask.title"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="project">Progetto</label>
+          <select
+            id="project"
+            name="projectId"
+            required
+            [(ngModel)]="editTask.projectId"
+          >
+            <option value="" disabled>Seleziona un progetto</option>
+            @for (item of allProjects(); track item.id) {
+              <option [value]="item.id">{{ item.name }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="form-row">
+
+          <div class="form-group">
+            <label for="priority">Priorità</label>
+            <select
+              id="priority"
+              name="priority"
+              required
+              [(ngModel)]="editTask.priority"
+            >
+              <option value="low">Bassa</option>
+              <option value="medium">Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="status">Stato</label>
+            <select
+              id="status"
+              name="status"
+              required
+              [(ngModel)]="editTask.status"
+            >
+              <option value="pending">In attesa</option>
+              <option value="in-progress">In corso</option>
+              <option value="completed">Completata</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label for="dueDate">Data di scadenza</label>
+          <input
+            type="date"
+            id="dueDate"
+            name="dueDate"
+            required
+            [(ngModel)]="editTask.dueDate"
+          />
+        </div>
+
+        <div class="form-actions">
+          <button
+            type="button"
+            class="cancel-btn"
+            routerLink="/tasks"
+          >
+            Annulla
+          </button>
+
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="loading()"
+          >
+            Salva modifiche
+          </button>
+        </div>
+
+      </form>
+    }
+
+  </div>
+</section>
+

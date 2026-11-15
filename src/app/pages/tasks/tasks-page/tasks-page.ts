@@ -4,6 +4,8 @@ import { TasksService } from '../../../services/tasks.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { ProjectService } from '../../../services/projects.service';
+import { ProjectModel } from '../../../models/project.model';
 
 @Component({
   selector: 'app-tasks-page',
@@ -14,11 +16,21 @@ import { RouterLink } from '@angular/router';
 export class TasksPage {
 
   private tasksService= inject(TasksService);
+  private projectService= inject(ProjectService);
   private destroy= inject(DestroyRef);
 
   tasksInput= signal<string>('');
   selection= signal<'all'| 'in-progress' | 'pending' | 'completed' >('all');
 
+  allProjects= signal<ProjectModel[]>([]);
+    projectsById = computed(() => {
+    return new Map(
+      this.allProjects().map(project => [
+        String(project.id),
+        project.name
+      ])
+    );
+  });
   loading= signal(true);
   error= signal<string | null>(null);
   deleteError= signal<string | null>(null);
@@ -38,7 +50,8 @@ export class TasksPage {
   
   
   ngOnInit(): void {
-    this.loadTasks()
+    this.loadTasks();
+    this.getAllProjects();
   }
 
   loadTasks(){
@@ -79,6 +92,23 @@ export class TasksPage {
       }
       
     })
+  }
+
+  getAllProjects() {
+    return this.projectService.getAllProjects().pipe(
+      takeUntilDestroyed(this.destroy)
+    ).subscribe({
+      next: (projects) => {
+        this.allProjects.set(projects);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+  }
+
+  getProjectName(id: string ): string {
+    return this.projectsById().get(String(id)) ?? 'Progetto non trovato';
   }
 }
 
